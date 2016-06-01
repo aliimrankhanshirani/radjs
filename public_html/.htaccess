@@ -1,0 +1,6 @@
+Options +FollowSymLinks
+
+RewriteEngine On
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteRule ^((?s).*)?(.*)$ index.jsx?_url=/$1 [QSA,L]
+
