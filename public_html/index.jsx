@@ -5,11 +5,11 @@
  * @author Ali
  */
 
+    load('../includes/functions.jsx');
     load('../includes/error_tracker.jsx');
     load('../includes/http_get_post_etc.jsx');
     load('../includes/core/mvc.jsx');
     load('../includes/settings.jsx');
-    load('../includes/init.jsx');
     
     function foo(a,b,c)
     {
@@ -24,24 +24,32 @@
         
         _url = _url.clean();
         
-        current_controller = DEFAULT_CONTROLLER;
-        current_method = DEFAULT_METHOD;
+        __current_controller = DEFAULT_CONTROLLER;
+        __current_method = DEFAULT_METHOD;
+        //__arguments = [];
         
         /* identify controller */
         if (_url.length > 0) 
         {
-            current_controller = _url[0];
+            __current_controller = _url[0];
             _url.splice(0,1);
         }    
         
         /* identify method */
         if (_url.length > 0) 
         {
-            current_method = _url[0];
+            __current_method = _url[0];
             _url.splice(0,1);
         }    
         
         _url.clean();
+        
+        __arguments = _url;
+        
+        load('../includes/init.jsx');
+
+        print ('arguments :');
+        print (System.toSource());
 
         foo.apply(this, _url);
 
