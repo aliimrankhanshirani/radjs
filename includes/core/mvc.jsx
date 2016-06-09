@@ -1,8 +1,5 @@
 
 
-
-
-
     _System = function()
     {
         this.current_controller = __current_controller;
@@ -11,7 +8,7 @@
         this.arguments = __arguments;
         
         this.host      = system.getenv('REMOTE_HOST');
-        this.root_path = this.host + system.getenv('SCRIPT_NAME').replace('index.jsx','');
+        this.http_root = this.host + system.getenv('SCRIPT_NAME').replace('index.jsx','');
         this.get       = _GET;
         this.post      = _POST;
         this.cookie    = _COOKIE;
