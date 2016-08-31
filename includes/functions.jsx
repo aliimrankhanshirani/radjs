@@ -5,6 +5,11 @@
     */
     //print('<br>'+System.root_path);    
     
+
+    print = function(str) { console.log(str); }
+  
+    
+    
     Array.prototype.clean = function() {
       for (var i = 0; i < this.length; i++) {
         if (this[i].length == 0) {         
@@ -15,7 +20,7 @@
       return this;
     };        
     
-    function cleanArray(actual) 
+    cleanArray = function (actual) 
     {
       var newArray = new Array();
       for (var i = 0; i < actual.length; i++) 
@@ -31,7 +36,7 @@
     
     
         
-    function remove_comments(str) {
+    remove_comments = function (str) {
         str = ('__' + str + '__').split('');
         var mode = {
             singleQuote: false,

@@ -1,11 +1,11 @@
-    //print = function(str) { write(str); }
+
     
     HTML_HEADER_DISPATCHED = false;
     start_html_header = function()
     {
         if (!HTML_HEADER_DISPATCHED)
             print ("Content-Type: text/html\n\n");
-        
+            
         HTML_HEADER_DISPATCHED = true;
     };
     
@@ -34,13 +34,14 @@
             print('Error not tracable!');
         
         print('</pre></center>');
+        process.exit();
     };
 
 
 
 
-/*
-process.on("uncaughtException", function(err){
-    console.log("Uncaught exception raised : " + err);
-});
-*/
+
+    process.on("uncaughtException", function(err){
+        dump_error( err);
+    });
+
