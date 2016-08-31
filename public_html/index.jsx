@@ -16,7 +16,9 @@
     __current_method = DEFAULT_METHOD;
     __arguments = [];
     
-    var fs = require("fs");
+    var fs     = require("fs");
+    var mysql  = require(__dirname + '/../includes/node_modules/mysql');
+    var mailer = require(__dirname + '/../includes/node_modules/nodemailer');
     
     adjust_constructor = function(_controller_name, objcode)
     {
@@ -34,17 +36,16 @@
         else 
             __code = _controller_name +' = function (){ /** DUMMY CONSTRUCTOR */ };';
             
-        
         __elements = [];
         
-        for (item in ____o)
+        /*for (item in ____o)
         {
             if (typeof ____o[item] === 'function')
             {
-                __elements.push(____o[item]);
+                __elements.push(item + ':' + ____o[item]);
                 delete ____o[item];
             }
-        }
+        }*/
         __code = __code + "\n\n" + 
                  _controller_name + ".prototype = {\n" + 
                 __elements .join(",\n") +
@@ -52,7 +53,12 @@
 
         for (item in ____o)
         {
-            __code += _controller_name +'.prototype.' +item + '= ' + JSON.stringify(____o[item] )+ ';\n';
+            if (typeof ____o[item] === 'function')
+                __code += _controller_name +'.prototype.' +item + '= ' +  ____o[item]  + ";\n";          
+            else
+                __code += 
+                        _controller_name +'.' +item + ' = ' +  
+                        _controller_name +'.prototype.' +item + ' = ' + JSON.stringify(____o[item] )+ ';\n' ;
         }        
         
         return __code;
@@ -65,8 +71,13 @@
 
         if (_GET["_url"] == undefined)
         {
+            throw ({
+                err   : `Invalid _url configuration`,
+                stack : `Invalid _url configuration`
+            });            
             process.exit();
         }
+        
         _url = _GET._url.split('/');
         
         _url = _url.clean();
@@ -100,8 +111,10 @@
         
         var __c_file = fs.readFileSync(__c_filepath).toString();
 
-        var __evaluateor_code = adjust_constructor(__current_controller, __c_file) ;
-        eval(__evaluateor_code);
+        var __evaluator_code = adjust_constructor(__current_controller, __c_file) ;
+        
+        //print (__evaluator_code);
+        eval(__evaluator_code);
         
         __c = 'var __c = new '+__current_controller+'();';
         eval(__c);
@@ -117,7 +130,6 @@
         __ce = `__c.${__current_method}.apply(${__current_controller},_url)`;
         
         eval(__ce);
-        
     }
     catch(err) 
     {

@@ -5,6 +5,7 @@
 
 
     {
+        layout : 'default',
         /** data items **/
         w : 'string',                               //string
         b : false,                                  //boolean
@@ -12,25 +13,28 @@
         f : 11.,                                    //float
         a : [1,2,3],                                //array
         o : { 'name' : 'Ali', 'age' : 50 },         //object
+        
     
     
         /** constructor **/
         __constructor()  
         {
-            print ("constructor called\n\n");
-            this.x = 256;
+            print ("constructor called "+this.layout+"\n\n");
         },
        
        
         /** controller methods **/ 
-        main(a, b, c)
+        main : function (a, b, c)
         {
-            print ('<hr/>home::main callled with args : '+ a + "," + b+ "," + c);
-            print (System.current_controller);
+            //print ('<hr/>home::main callled with args : '+ a + "," + b+ "," + c);
+            print ('current layout : ' + this.layout);
+            
+            
         },
         
-        main2()
+        main2 : function()
         {
+            print ("home::main2");
             return 0;
         }
     }
