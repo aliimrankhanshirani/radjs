@@ -28,9 +28,10 @@ long_line_behaviour=1
 long_line_column=72
 
 [files]
-current_page=1
-FILE_NAME_0=1749;Javascript;0;EUTF-8;0;1;0;C%3A%5Cxampp%5Chtdocs%5CRADJS--%5Cpublic_html%5Cindex.jsx;0;4
-FILE_NAME_1=30;Sh;0;EUTF-8;0;1;0;C%3A%5Cxampp%5Chtdocs%5CRADJS--%5Cincludes%5Cinstall_packages.sh;0;4
+current_page=2
+FILE_NAME_0=2166;Javascript;0;EUTF-8;0;1;0;C%3A%5Cxampp%5Chtdocs%5CRADJS--%5Cpublic_html%5Cindex.jsx;0;4
+FILE_NAME_1=942;None;0;EUTF-8;0;1;0;C%3A%5Cxampp%5Chtdocs%5CRADJS--%5Capplication%5Ccontrollers%5Chome.jsx;0;4
+FILE_NAME_2=312;PHP;0;EUTF-8;0;1;0;C%3A%5Cxampp%5Chtdocs%5CAPISbm%5Cflock-test%5Ccheck.php;0;4
 
 [prjorg]
 source_patterns=*.c;*.C;*.cpp;*.cxx;*.c++;*.cc;*.m;

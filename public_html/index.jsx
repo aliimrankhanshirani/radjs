@@ -11,6 +11,7 @@
     require(__dirname + '/../includes/http_get_post_etc.jsx');
     require(__dirname + '/../includes/core/mvc.jsx');
     require(__dirname + '/../includes/settings.jsx');
+    require(__dirname + '/../includes/_compiled_templates.jsx');
     
     __current_controller = DEFAULT_CONTROLLER;
     __current_method = DEFAULT_METHOD;
@@ -54,12 +55,18 @@
         for (item in ____o)
         {
             if (typeof ____o[item] === 'function')
-                __code += _controller_name +'.prototype.' +item + '= ' +  ____o[item]  + ";\n";          
+                __code += 
+                        _controller_name +'.' +item + ' = ' +  
+                        _controller_name +'.prototype.' +item + '= ' +  ____o[item]  + ";\n";          
             else
                 __code += 
                         _controller_name +'.' +item + ' = ' +  
                         _controller_name +'.prototype.' +item + ' = ' + JSON.stringify(____o[item] )+ ';\n' ;
         }        
+        
+        __code += 
+                _controller_name +'.render = ' +  
+                _controller_name +'.prototype.render = function(template, area, _DATA) { System.render(template, area, _DATA); }\n';
         
         return __code;
     }
@@ -130,6 +137,8 @@
         __ce = `__c.${__current_method}.apply(${__current_controller},_url)`;
         
         eval(__ce);
+        
+        print (global._OUTPUT);
     }
     catch(err) 
     {

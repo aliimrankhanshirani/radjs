@@ -1,4 +1,6 @@
 
+    
+
 
     _System = function()
     {
@@ -13,6 +15,11 @@
         this.post      = _POST;
         this.cookie    = _COOKIE;
         this.session   = {};
+        this.render = function (template, area, _DATA)
+        {
+            tpl_data = global.radJS_TE[template](_DATA);
+            global._OUTPUT += tpl_data;
+        }
     }
 
     Controller = function(args)
@@ -23,5 +30,6 @@
     Controller.prototype = 
     {
         constructor : Controller
+             
     }
     

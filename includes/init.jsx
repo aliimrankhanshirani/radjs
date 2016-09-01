@@ -4,5 +4,6 @@
     }  
 
     System = new _System;
-    
+    global._OUTPUT = '';
+    global._TPLDIR = __dirname + '/../application/views';
    

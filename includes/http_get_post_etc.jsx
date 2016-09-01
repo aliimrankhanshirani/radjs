@@ -62,4 +62,6 @@
     _POST = get_POST_data();
     _COOKIE = get_COOKIE_data();
     
-    
+    global._GET = _GET;
+    global._POST = _POST;
+    global._COOKIE = _COOKIE;

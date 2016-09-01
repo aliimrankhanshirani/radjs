@@ -19,7 +19,7 @@
         /** constructor **/
         __constructor()  
         {
-            print ("constructor called "+this.layout+"\n\n");
+            //print ("constructor called "+this.layout+"\n\n");
         },
        
        
@@ -27,14 +27,23 @@
         main : function (a, b, c)
         {
             //print ('<hr/>home::main callled with args : '+ a + "," + b+ "," + c);
-            print ('current layout : ' + this.layout);
+            //print ('current layout : ' + this.layout);
+            
+            this.render(
+                'header', 
+                'content', 
+                {
+                    name : "Ali",
+                     age : 39
+                }
+            );
             
             
         },
         
         main2 : function()
         {
-            print ("home::main2");
+            //print ("home::main2");
             return 0;
         }
     }
