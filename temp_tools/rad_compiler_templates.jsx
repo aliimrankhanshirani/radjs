@@ -62,5 +62,5 @@ _compiled_data = 'global.radJS_TE = {\n' +
                 '};\n\n';
 
 fs.writeFileSync('../includes/_compiled_templates.jsx', _compiled_data);
-console.log(_compiled_data);
+//console.log(_compiled_data);
 

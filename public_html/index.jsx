@@ -5,19 +5,27 @@
      * @author Ali
      * https://github.com/radsystem/radjs
      */
+     
+    var fs = require("fs");     
+    include = function (f) 
+    {
+       eval.apply(global, [fs.readFileSync(f).toString()]);
+    }     
 
-    require(__dirname + '/../includes/functions.jsx');
-    require(__dirname + '/../includes/error_tracker.jsx');
-    require(__dirname + '/../includes/http_get_post_etc.jsx');
-    require(__dirname + '/../includes/core/mvc.jsx');
-    require(__dirname + '/../includes/settings.jsx');
-    require(__dirname + '/../includes/_compiled_templates.jsx');
+    var __DIRNAME = __dirname;
+
+    include(  '../includes/functions.jsx');
+    include(  '../includes/error_tracker.jsx');
+    include(  '../includes/http_get_post_etc.jsx');
+    include(  '../includes/core/mvc.jsx');
+    include(  '../includes/settings.jsx');
+    include(  '../includes/_compiled_templates.jsx');
     
     __current_controller = DEFAULT_CONTROLLER;
     __current_method = DEFAULT_METHOD;
     __arguments = [];
     
-    var fs     = require("fs");
+
     var mysql  = require(__dirname + '/../includes/node_modules/mysql');
     var mailer = require(__dirname + '/../includes/node_modules/nodemailer');
     
@@ -104,8 +112,8 @@
         _url.clean();
         
         __arguments = _url;
-        
-        require(__dirname + '/../includes/init.jsx');
+        var init_F = __DIRNAME + '/../includes/init.jsx';
+        include(init_F);
         
         var __c_filepath = '../application/controllers/'+__current_controller+'.jsx';
         if (!fs.existsSync(__c_filepath))
@@ -137,8 +145,8 @@
         __ce = `__c.${__current_method}.apply(${__current_controller},_url)`;
         
         eval(__ce);
-        
-        print (global._OUTPUT);
+        _CONTROLLER_OBJECT = __c;
+        print (_OUTPUT);
     }
     catch(err) 
     {

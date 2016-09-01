@@ -1,5 +1,2 @@
-npm install mysql nodemailer
-
-
-pause
- path
+npm install mysql nodemailer path vm --save
+npm update

@@ -5,7 +5,6 @@
     _System = function()
     {
         this.current_controller = __current_controller;
-        
         this.current_method = __current_method;
         this.arguments = __arguments;
         
@@ -18,7 +17,8 @@
         this.render = function (template, area, _DATA)
         {
             tpl_data = global.radJS_TE[template](_DATA);
-            global._OUTPUT += tpl_data;
+            print (_CONTROLLER_OBJECT.layout);
+            _OUTPUT += tpl_data;
         }
     }
 
