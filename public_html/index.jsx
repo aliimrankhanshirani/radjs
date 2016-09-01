@@ -14,17 +14,16 @@
 
     var __DIRNAME = __dirname;
 
-    include(  '../includes/functions.jsx');
-    include(  '../includes/error_tracker.jsx');
-    include(  '../includes/http_get_post_etc.jsx');
-    include(  '../includes/core/mvc.jsx');
-    include(  '../includes/settings.jsx');
-    include(  '../includes/_compiled_templates.jsx');
+    include(  __dirname+'/../includes/functions.jsx');
+    include(  __dirname+'/../includes/error_tracker.jsx');
+    include(  __dirname+'/../includes/http_get_post_etc.jsx');
+    include(  __dirname+'/../includes/core/mvc.jsx');
+    include(  __dirname+'/../includes/settings.jsx');
+    include(  __dirname+'/../includes/_compiled_templates.jsx');
     
     __current_controller = DEFAULT_CONTROLLER;
     __current_method = DEFAULT_METHOD;
     __arguments = [];
-    
 
     var mysql  = require(__dirname + '/../includes/node_modules/mysql');
     var mailer = require(__dirname + '/../includes/node_modules/nodemailer');
@@ -113,7 +112,7 @@
         
         __arguments = _url;
         var init_F = __DIRNAME + '/../includes/init.jsx';
-        include(init_F);
+        require(init_F);
         
         var __c_filepath = '../application/controllers/'+__current_controller+'.jsx';
         if (!fs.existsSync(__c_filepath))
