@@ -1,4 +1,5 @@
 
-
-    DEFAULT_CONTROLLER = 'home';
-    DEFAULT_METHOD = 'main';
+    module.exports = function () {
+        this.DEFAULT_CONTROLLER = 'home';
+        this.DEFAULT_METHOD     = 'main';
+    };
