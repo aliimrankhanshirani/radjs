@@ -1,0 +1,22 @@
+Install webdav
+create vhost
+
+
+
+Server
+mkdir test.git
+cd test.git
+git --bare init
+
+
+
+Local
+Add it to source tree
+git remote add origin http://bilalsipra@webdev/test.git
+
+
+"C:\Program Files\Git\bin\git.exe" clone -v --recurse-submodules --progress "http://webdev/radsys.git" "C:/Users/Imran/Desktop/radsys2/radsys"
+
+"C:\Program Files\Git\bin\git.exe" commit -F "C:\Users\Imran\Desktop\radsys\.git\COMMITMESSAGE"
+
+"C:\Program Files\Git\bin\git.exe" push --recurse-submodules=check --progress "origin" refs/heads/master:refs/heads/master
